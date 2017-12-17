@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title> Register Page </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+      <style>
+        .affix{
+          top: 0;
+          width: 100%;
+        }
+        input[type=text], input[type=password] {
+          width: 30%;
+          padding: 12px 20px;
+          margin: 8px 0;
+          display: inline-block;
+          border: 1px solid #ccc;
+          box-sizing: border-box;
+        }
+        button {
+          background-color: #4CAF50;
+          color: white;
+          padding: 14px 20px;
+          margin: 8px 0;
+          border: none;
+          cursor: pointer;
+          width: 100%;
+        }
+        .cancelbtn {
+          padding: 14px 20px;
+          background-color: #f44336;
+        }
+        .cancelbtn,.signupbtn {
+          float: left;
+          width: 25%;
+        }
+        .container {
+          padding: 16px;
+        }
+        .clearfix::after {
+          content: "";
+          clear: both;
+          display: table;
+        }
+        @media screen and (max-width: 300px) {
+          .cancelbtn, .signupbtn {
+            width: 100%;
+          }
+        }
+      </style>
+  </head>
+  <body>
+  <div class="container-fluid">
+    <div class="row">
+      <nav class="navbar navbar-custom" data-spy="affix" data-offset-top="197">
+        <div class="navbar-header">
+          <img class="img-responsive navbar-brand col-sm-1" src="MyBlog_logo.jpg" alt="logo.jpg">
+        </div>
+        <ul class="nav navbar-nav">
+          <div class="col-sm-offset-3 col-sm-2">
+            <li><a href="viewblogs"><h3>View Blogs</h3></a></li>
+          </div>
+          <div class="col-sm-offset-3 col-sm-2">
+            <li><a href="createblog"><h3>Create Blog</h3></a></li>
+          </div>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <div style ="padding:20px;"></div>
+  <div class="container">
+    <img class="img-responsive" src="/register.jpg" alt="register">
+  </div>
+  <div style="padding:10px;"></div>
+  <h2> Sign Up.. </h2>
+  <form ng-app="myApp" ng-controller="validateCtrl" name="myForm" role="form" style="border:1px solid #ccc" name="myForm" action="/insert" method="POST" novalidate>
+    <div class="container">
+      <div style="padding:20px;"></div>
+      <label><b>Firstname</b></label>&nbsp;
+      <input type="text" id="firstname" name="firstname" placeholder="Your first name..">&nbsp;&nbsp;
+      <label><b>Lastname</b></label>&nbsp;
+      <input type="text" id="lastname" name="lastname" placeholder="Your last name.."></br>
+      <div style="padding:10px;"></div>
+      <label><b>Email</b></label>&nbsp;
+      <input type="email" name="email" ng-model="email" required>
+      <span style="color:red" ng-show="myForm.email.$dirty && myForm.email.$invalid">
+        <span ng-show="myForm.email.$error.required">Email is required.</span>
+        <span ng-show="myForm.email.$error.email">Invalid email address.</span>
+      </span>
+      <div style="padding:10px;"></div>
+      <label><b>Password</b></label>&nbsp;
+      <input type="password" ng-model="psw" placeholder="Enter Password" id="psw" name="psw" required>&nbsp;
+        <span style="color:red;" ng-show="myForm.psw.$dirty">
+          <span ng-show="myForm.psw.$error.required">Password required</span>
+        </span> &nbsp;
+      <label><b>Repeat Password</b></label>&nbsp;
+      <input type="password" ng-model="rpsw" ng-change="pcheck()"place holder="Repeat Password" id="rpsw" name="rpsw" required>
+        <span style="color:red;" ng-show="myForm.rpsw.$dirty">
+          <span ng-show="myForm.rpsw.$error.required">Password required</span></br>
+          <span ng-show="!show"> Passwords dont match </span>
+        </span>
+      <div style="padding:10px;"></div>
+      <label><b>Enter DOB</b></label></br>
+      <select name="day" id="day">
+        <option value="" selected>Day</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+        <option value="16">16</option>
+        <option value="17">17</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+        <option value="20">20</option>
+        <option value="21">21</option>
+        <option value="22">22</option>
+        <option value="23">23</option>
+        <option value="24">24</option>
+        <option value="25">25</option>
+        <option value="26">26</option>
+        <option value="27">16</option>
+        <option value="28">28</option>
+        <option value="29">29</option>
+        <option value="30">30</option>
+        <option value="31">31</option>
+      </select>&nbsp;
+      <select name="month" id="month">
+        <option value="" selected >Month</option>
+        <option value="1">Jan</option>
+        <option value="2">Feb</option>
+        <option value="3">Mar</option>
+        <option value="4">Apr</option>
+        <option value="5">May</option>
+        <option value="6">June</option>
+        <option value="7">July</option>
+        <option value="8">Aug</option>
+        <option value="9">Sept</option>
+        <option value="10">Oct</option>
+        <option value="11">Nov</option>
+        <option value="12">Dec</option>
+      </select>&nbsp;
+      <select name="year" id="year">
+        <option value="" selected>Year</option>
+        <option value="2017">2017</option>
+        <option value="2016">2016</option>
+        <option value="2015">2015</option>
+        <option value="2014">2014</option>
+        <option value="2013">2013</option>
+        <option value="2012">2012</option>
+        <option value="2011">2011</option>
+        <option value="2010">2010</option>
+        <option value="2009">2009</option>
+        <option value="2008">2008</option>
+        <option value="2007">2007</option>
+        <option value="2006">2006</option>
+        <option value="2005">2005</option>
+        <option value="2004">2004</option>
+        <option value="2003">2003</option>
+        <option value="2002">2002</option>
+        <option value="2001">2001</option>
+        <option value="2000">2000</option>
+        <option value="1999">1999</option>
+        <option value="1998">1998</option>
+      </select>
+      <div style="padding:20px;"></div>
+        <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+      <div style="padding:10px;"></div>
+        <div class="row">
+          <div class="clearfix">
+            <div class="col-sm-offset-3 col-sm-3">
+              <a href="createblog" class="cancelbtn" role="button">Cancel</a>
+            </div>
+            <div class="col-sm-4">
+              <button type="submit" ng-disabled="myForm.email.$dirty && myForm.email.$invalid|| myForm.password.$pristine || myForm.rpassword.$pristine" class="signupbtn">Sign Up</button>
+            </div>
+          </div>
+        </div>
+  </div>
+  </form>
+  <!-- Footer Section -->
+
+  <div style="padding:20px;"></div>
+  <div class="container-fluid">
+    <div class="row">
+      <p class=col-sm-offset-5 col-sm-2" style="color:CadetBlue"> copyright@2017 Team MyBlog... </p>
+    </div>
+  </div> 
+  <script>
+    var app = angular.module('myApp', []);
+      app.controller('validateCtrl', function($scope) {
+        $scope.email = '';
+        $scope.psw = '';
+        $scope.rpsw = '';
+    
+    
+       $scope.pcheck=function() {
+         $scope.show=false;
+         if($scope.psw===$scope.rpsw)
+         { 
+           $scope.show=true;
+         } 
+       }
+    });
+  </script>
+  </body>
+</html>
+
+
+

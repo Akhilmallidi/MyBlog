@@ -1,0 +1,73 @@
+<html>
+<head>
+    <title>View Blogs</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <style>
+        body {
+            margin: 20px;
+            font-family: 'Arial', 'Helvetica', 'sans-serif';
+            font-size: 15px;
+        }
+        .around {
+            margin-bottom: 15px;
+            padding: 0px 15px;
+            border: 1px solid #cbd1d5;
+            border-radius: 6px;
+        }
+    </style>
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('myCtrl', function($scope, $http) {
+            $scope.blogs = [];
+            $http.get('/getblogs').then(function (data) {
+                $scope.blogs = data.data.blogs;
+            });
+        });
+    </script>
+</head>
+
+<body ng-app="myApp" ng-controller="myCtrl">
+ <!-- Navbar Section -->
+
+  <div class="container-fluid">
+    <div class="row">
+      <nav class="navbar navbar-custom" data-spy="affix" data-offset-top="197">
+        <div class="navbar-header">
+          <img class="img-responsive navbar-brand col-sm-1" src="MyBlog_logo.jpg" alt="logo.jpg">
+        </div>
+        <ul class="nav navbar-nav">
+          <div class="col-sm-offset-3 col-md-2">
+            <li><a href="viewblogs"><h3>View Blogs</h3></a></li>
+          </div>
+          <div class="col-sm-offset-3 col-md-2">
+            <li><a href="createblog"><h3>Create Blog</h3></a></li>
+          </div>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+    <h2>View Blogs</h2>
+    <div class="around" ng-repeat="blog in blogs">
+        <h3>{{blog.title}}</h3>
+        <div class="row">
+            <div class="col-sm-6">Author: {{blog.author}}</div>
+            <div class="col-sm-6">Date: {{blog.timestamp}}</div>
+            <hr>
+            <div class="col-sm-12">&nbsp;&nbsp;&nbsp;&nbsp;{{blog.blog}}</div>
+        </div>
+    </div>
+  <!-- Footer Section -->
+
+  <div style="padding:20px;"></div>
+  <div class="container-fluid">
+    <div class="row">
+      <p class=col-sm-offset-5 col-sm-2" style="color:CadetBlue"> copyright@2017 Team MyBlog... </p>
+    </div>
+  </div>
+
+</body>
+</html>

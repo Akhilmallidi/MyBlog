@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title> Login Page </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+    <style>
+      .affix{
+        top: 0;
+        width: 100%;
+      }
+      form {
+        border: 3px solid #f1f1f1;
+      }
+
+      input[type=text], input[type=password] {
+        width: 40%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+      }
+
+      button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 30%;
+      }
+
+      button:hover {
+        opacity: 0.8;
+      }
+
+      .cancelbtn {
+        width: auto;
+        padding: 10px 18px;
+        background-color: #f44336;
+      }
+
+      .imgcontainer {
+        text-align: center;
+        margin: 24px 0 12px 0;
+      }
+
+      img.avatar {
+        width: 40%;
+        border-radius: 50%;
+      }
+
+      .container {
+        padding: 16px;
+      }
+
+      span.psw {
+        float: right;
+        padding-top: 16px;
+      }
+
+      @media screen and (max-width: 300px) {
+      span.psw {
+        display: block;
+        float: none;
+      }
+      .cancelbtn {
+        width: 100%;
+      }
+    }
+    </style>
+  </head>
+  <body>
+  <!-- Navbar Section -->
+
+  <div class="container-fluid">
+    <div class="row">
+      <nav class="navbar navbar-custom" data-spy="affix" data-offset-top="197">
+        <div class="navbar-header">
+          <img class="img-responsive navbar-brand col-sm-1" src="MyBlog_logo.jpg" alt="logo.jpg">
+        </div>
+        <ul class="nav navbar-nav">
+          <div class="col-sm-offset-3 col-sm-2">
+            <li><a href="viewblogs"><h3>View Blogs</h3></a></li>
+          </div>
+          <div class="col-sm-offset-3 col-sm-2">
+            <li><a href="createblog"><h3>Create Blog</h3></a></li>
+          </div>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <div style="padding:20px;"></div> 
+  <h2>Login Form</h2>
+  <div style="padding:20px;"></div>
+  <form action="/check" method="POST" novalidate>
+    <div class="imgcontainer">
+      <img src="login.jpg" alt="login" class="avatar">
+    </div>
+
+    <div class="container">
+      <label><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="uname" required>
+
+      <label><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required>
+    </div>
+        
+    <div class="container">
+      <button type="submit">Login</button>
+      <input type="checkbox" checked="checked"> Remember me
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" class="cancelbtn">Cancel</button>
+      <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+  </form>
+  <div style ="padding:70px;"></div>
+  <!-- Footer Section -->
+
+  <div class="container-fluid">
+    <div class="row">
+      <p class=col-sm-offset-5 col-sm-2" style="color:CadetBlue"> copyright@2017 Team MyBlog... </p>
+    </div>
+  </div>
+
+
+  </body>
+</html>
+
+
+
+
